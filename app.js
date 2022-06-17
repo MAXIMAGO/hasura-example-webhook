@@ -10,6 +10,11 @@ app.post('/insertCar', (req, res) => {
     res.send(true)
 })
 
+app.post('/newsletter', (req, res) => {
+  console.log(req.body)
+  res.send(true)
+})
+
 
 let port = process.env.PORT;
 if (port == null || port == "") {
