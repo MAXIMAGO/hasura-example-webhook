@@ -12,7 +12,7 @@ app.post('/insertCar', (req, res) => {
 
 app.post('/newsletter', (req, res) => {
   console.log('Sending Newsletter')
-  const newCar = req.body.payload.event.data.new
+  const newCar = req.body.event.data.new
   console.log(`${newCar.make} ${newCar.model} is new in stock. Try it out!`)
   res.status(200).send({"email": true})
 })
