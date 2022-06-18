@@ -6,8 +6,24 @@ const app = express()
 app.use(bodyParser.json())
 
 app.post('/validate-registration', (req, res) => {
-    console.log(`Query traffic office for registration number.`)
-    res.status(200).send({car: undefined})
+
+  // get request input
+  const { object } = req.body.input;
+
+  console.log(`Query traffic office for registration number.`)
+
+  // execute the Hasura operation
+  const { data, errors } = await execute({ object });
+
+  // if Hasura operation errors, then throw error
+  if (errors) {
+    return res.status(400).json(errors[0])
+  }
+
+  // success
+  return res.json({
+    ...data.insert_rent_a_car_car_one
+  })
 })
 
 app.post('/welcome-customer', (req, res) => {
