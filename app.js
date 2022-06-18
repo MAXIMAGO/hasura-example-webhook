@@ -5,23 +5,23 @@ var bodyParser = require('body-parser')//add this
 
 app.use(bodyParser())//add this before any route or before using req.body
 
-app.post('/insertCar', (req, res) => {
-    console.log(req.body)
-    res.send(true)
+app.post('/validate-registration', (req, res) => {
+    console.log(`Query traffic office for registration number.`)
+    res.status(200).send({car: undefined})
 })
 
 app.post('/welcome-customer', (req, res) => {
   console.log('Sending Welcome Email')
   const newCustomer = req.body.event.data.new
   console.log(`Welcome ${newCustomer.first_name} ${newCustomer.last_name} to Rent-A-Car!`)
-  res.status(200).send({"email": true})
+  res.status(200).send({email: true})
 })
 
 app.post('/newsletter', (req, res) => {
   console.log('Sending Newsletter')
   const newCar = req.body.event.data.new
   console.log(`${newCar.make} ${newCar.model} is new in stock. Try it out!`)
-  res.status(200).send({"email": true})
+  res.status(200).send({email: true})
 })
 
 
