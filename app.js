@@ -13,7 +13,10 @@ app.post('/insertCar', (req, res) => {
   console.log(`Query traffic office for registration number.`)
 
   // execute the Hasura operation
-  const { data, errors } = await execute({ object });
+  const { data, errors } = {
+    data: { insert_rent_a_car_car_one: undefined },
+    errors: undefined
+  } // await execute({ object });
 
   // if Hasura operation errors, then throw error
   if (errors) {
