@@ -1,9 +1,9 @@
 const express = require('express')
+const bodyParser = require('body-parser')
+
 const app = express()
 
-var bodyParser = require('body-parser')//add this
-
-app.use(bodyParser())//add this before any route or before using req.body
+app.use(bodyParser.json())
 
 app.post('/validate-registration', (req, res) => {
     console.log(`Query traffic office for registration number.`)
