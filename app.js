@@ -11,15 +11,17 @@ app.post('/insertCar', (req, res) => {
 })
 
 app.post('/newsletter', (req, res) => {
-  console.log(req.body)
-  res.send(true)
+  console.log('Sending Newsletter')
+  const newCar = req.body.payload.event.data.new
+  console.log(`${newCar.make} ${newCar.model} is new in stock. Try it out!`)
+  res.status(200).send({"email": true})
 })
 
 
-let port = process.env.PORT;
+let port = process.env.PORT
 if (port == null || port == "") {
-  port = 8000;
+  port = 8000
 }
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Hasura Example Webhook listening on port ${port}`)
 })
