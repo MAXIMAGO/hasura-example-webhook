@@ -5,7 +5,7 @@ const app = express()
 
 app.use(bodyParser.json())
 
-app.post('/validate-registration', (req, res) => {
+app.post('/insertCar', (req, res) => {
 
   // get request input
   const { object } = req.body.input;
