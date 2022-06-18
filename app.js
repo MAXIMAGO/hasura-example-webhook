@@ -10,6 +10,13 @@ app.post('/insertCar', (req, res) => {
     res.send(true)
 })
 
+app.post('/welcome-customer', (req, res) => {
+  console.log('Sending Welcome Email')
+  const newCustomer = req.body.event.data.new
+  console.log(`Welcome ${newCustomer.first_name} ${newCustomer.last_name} to Rent-A-Car!`)
+  res.status(200).send({"email": true})
+})
+
 app.post('/newsletter', (req, res) => {
   console.log('Sending Newsletter')
   const newCar = req.body.event.data.new
